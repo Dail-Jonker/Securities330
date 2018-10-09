@@ -4,18 +4,25 @@ public class Main
 {
     public static void main(String[] args)
     {
-      String str = "";
-      String message = "";
-      try
+      if(args.length==1)
       {
-        BufferedReader br = new BufferedReader(new FileReader("CeasarText.txt"));
-        while((str = br.readLine()) != null)
-          message += str;
+          String str = "";
+          String message = "";
+          try
+          {
+              BufferedReader br = new BufferedReader(new FileReader(args[0]));
+              while((str = br.readLine()) != null)
+                  message += str;
+          }
+          catch (IOException e) {
+              e.printStackTrace();
+          }
+          CeaserCipherBreaker ceaserCipherBreaker = new CeaserCipherBreaker(new CeaserCipher(),message,new AsciiAlphabet());
+          System.out.println(ceaserCipherBreaker.breakText());
       }
-      catch (IOException e) {
-        e.printStackTrace();
+      else
+      {
+          System.out.println("Invalid number of params");
       }
-      CeaserCipherBreaker ceaserCipherBreaker = new CeaserCipherBreaker(new CeaserCipher(),message,new AsciiAlphabet());
-        System.out.println(ceaserCipherBreaker.breakText());
     }
 }
