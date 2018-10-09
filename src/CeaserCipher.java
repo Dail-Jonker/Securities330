@@ -15,32 +15,6 @@ public class CeaserCipher implements Cipher
     }
 
     @Override
-    public String encode(String value, Alphabet alphabet, int offset) throws IllegalArgumentException
-    {
-        StringBuilder b = new StringBuilder();
-        for(char c: value.toCharArray())
-        {
-            if(!ignore.contains(c))
-            {
-                try
-                {
-                    b.append(alphabet.getCharWithOffset(c,offset));
-                }
-                catch (IllegalArgumentException e)
-                {
-                    addIgnore(c);
-                    b.append(c);
-                }
-            }
-            else
-            {
-                b.append(c);
-            }
-        }
-        return b.toString();
-    }
-
-    @Override
     public String decode(String value, Alphabet alphabet, int offset)
     {
         StringBuilder b = new StringBuilder();
