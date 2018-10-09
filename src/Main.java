@@ -18,5 +18,9 @@ public class Main
       }
 
       CeaserCipherBreaker ceaserCipherBreaker = new CeaserCipherBreaker(new CeaserCipher(),str,new AsciiAlphabet());
+      if(ceaserCipherBreaker.IsEnglish("I"));
+      {
+        System.out.println("Yes");
+      }
     }
 }
