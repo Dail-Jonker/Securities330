@@ -1,7 +1,13 @@
 public class CeaserCipherBreaker
 {
-  public CeaserCipherBreaker()
+  public CeaserCipher cc = null;
+  public String text = "";
+  public String alphabet = "";
+  public CeaserCipherBreaker(CeaserCipher _cc, String _text, String _alphabet)
   {
+    cc = _cc;
+    text = _text;
+    alphabet = _alphabet;
   }
   public int[] Frequency(String a, String encoded)
   {
