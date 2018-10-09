@@ -2,8 +2,8 @@ public class CeaserCipherBreaker
 {
   public CeaserCipher cc = null;
   public String text = "";
-  public String alphabet = "";
-  public CeaserCipherBreaker(CeaserCipher _cc, String _text, String _alphabet)
+  public Alphabet alphabet;
+  public CeaserCipherBreaker(CeaserCipher _cc, String _text, Alphabet _alphabet)
   {
     cc = _cc;
     text = _text;

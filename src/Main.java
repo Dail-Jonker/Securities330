@@ -15,7 +15,8 @@ public class Main
       catch (IOException e)
       {
         e.printStackTrace();
-      };
-      AsciiAlphabet alphabet = new AsciiAlphabet();
+      }
+
+      CeaserCipherBreaker ceaserCipherBreaker = new CeaserCipherBreaker(new CeaserCipher(),str,new AsciiAlphabet());
     }
 }
