@@ -23,4 +23,15 @@ public class CeaserCipherBreaker
     }
     return freq;
   }
+
+  public String breakText()
+  {
+    String broken="";
+    return broken;
+  }
+
+  private boolean compareToDictionary(String word)
+  {
+      return false;
+  }
 }
