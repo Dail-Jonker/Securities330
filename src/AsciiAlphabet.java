@@ -8,7 +8,7 @@ public class AsciiAlphabet implements Alphabet
         letters=new ArrayList<>();
         String str= "0123456789";
         str = str.concat("ABCDEFGHIJKLMNOPQRSTUVWXYZ".toLowerCase());
-        //str = str.concat("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+        str = str.concat("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
         for(char c: str.toCharArray())
         {
             letters.add(c);
@@ -17,8 +17,14 @@ public class AsciiAlphabet implements Alphabet
     @Override
     public int getIndex(char input)
     {
-        input = Character.toLowerCase(input);
-        return letters.indexOf(input);
+        if(letters.contains(input))
+        {
+            return letters.indexOf(input);
+        }
+        else
+        {
+            throw new IllegalArgumentException();
+        }
     }
 
     @Override
@@ -43,8 +49,15 @@ public class AsciiAlphabet implements Alphabet
     @Override
     public char getCharWithOffset(char character, int offset)
     {
-        int ch = getIndex(character);
-        return getChar(ch+offset);
+        try
+        {
+            int ch = getIndex(character);
+            return getChar(ch+offset);
+        }
+        catch (IllegalArgumentException e)
+        {
+            throw e;
+        }
     }
 
     @Override
