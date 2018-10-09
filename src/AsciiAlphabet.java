@@ -74,4 +74,18 @@ public class AsciiAlphabet implements Alphabet
         }
         return ret;
     }
+
+    @Override
+    public int[] getIndexList(char[] list)
+    {
+        int[] indexList = new int[list.length];
+        for(int i=0;i<list.length;i++)
+        {
+            if(letters.contains(list[i]))
+            {
+                indexList[i]=getIndex(list[i]);
+            }
+        }
+        return indexList;
+    }
 }

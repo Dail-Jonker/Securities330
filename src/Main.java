@@ -8,12 +8,11 @@ public class Main
       String message = "";
       try
       {
-        BufferedReader br = new BufferedReader(new FileReader("file.txt"));
+        BufferedReader br = new BufferedReader(new FileReader("CeasarText.txt"));
         while((str = br.readLine()) != null)
           message += str;
       }
-      catch (IOException e)
-      {
+      catch (IOException e) {
         e.printStackTrace();
       }
 
@@ -22,5 +21,7 @@ public class Main
       {
         System.out.println("Yes");
       }
+      CeaserCipherBreaker ceaserCipherBreaker = new CeaserCipherBreaker(new CeaserCipher(),message,new AsciiAlphabet());
+        System.out.println(ceaserCipherBreaker.breakText());
     }
 }
