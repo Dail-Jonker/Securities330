@@ -15,12 +15,6 @@ public class Main
       catch (IOException e) {
         e.printStackTrace();
       }
-
-      CeaserCipherBreaker ceaserCipherBreaker = new CeaserCipherBreaker(new CeaserCipher(),str,new AsciiAlphabet());
-      if(ceaserCipherBreaker.IsEnglish("I"));
-      {
-        System.out.println("Yes");
-      }
       CeaserCipherBreaker ceaserCipherBreaker = new CeaserCipherBreaker(new CeaserCipher(),message,new AsciiAlphabet());
         System.out.println(ceaserCipherBreaker.breakText());
     }

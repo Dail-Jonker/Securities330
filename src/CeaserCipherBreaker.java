@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class CeaserCipherBreaker
 {
@@ -33,59 +34,46 @@ public class CeaserCipherBreaker
     return freq;
   }
 
-  public boolean IsEnglish(String word)
-  {
-    String[] one = {"a", "i"};
-    String[] two = {"of", "to", "in", "it", "is", "be", "as", "at", "so", "we",
-    "he", "by", "or", "on", "do", "if", "me", "my", "up", "an", "go", "no", "us", "am"};
-    String[] three = {"the", "and", "for", "are", "but", "not", "you", "all", "any", "can",
-    "had", "her", "was", "one", "our", "out", "day", "get", "has", "him", "his", "how",
-    "man", "new", "now", "old", "see", "two", "way", "who", "boy", "did", "its", "let", "put",
-    "say", "she", "too", "use"};
-    String[] four = {"that", "with", "have", "this", "will", "your", "from", "they",
-    "know", "want", "been", "good", "much", "some", "time"};
+  public boolean IsEnglish(String word) {
+      String[] one = {"a", "i"};
+      String[] two = {"of", "to", "in", "it", "is", "be", "as", "at", "so", "we",
+              "he", "by", "or", "on", "do", "if", "me", "my", "up", "an", "go", "no", "us", "am"};
+      String[] three = {"the", "and", "for", "are", "but", "not", "you", "all", "any", "can",
+              "had", "her", "was", "one", "our", "out", "day", "get", "has", "him", "his", "how",
+              "man", "new", "now", "old", "see", "two", "way", "who", "boy", "did", "its", "let", "put",
+              "say", "she", "too", "use"};
+      String[] four = {"that", "with", "have", "this", "will", "your", "from", "they",
+              "know", "want", "been", "good", "much", "some", "time"};
 
-    if(word.length() == 1)
-    {
-      for(int i = 0; i < one.length; i++)
-      {
-        if(word == one[i])
-          return true;
+      if (word.length() == 1) {
+          for (int i = 0; i < one.length; i++) {
+              if (word == one[i])
+                  return true;
+          }
+          return false;
+      } else if (word.length() == 2) {
+          for (int i = 0; i < two.length; i++) {
+              if (word.equalsIgnoreCase(two[i]))
+                  return true;
+          }
+          return false;
+      } else if (word.length() == 3) {
+          for (int i = 0; i < three.length; i++) {
+              if (word.equalsIgnoreCase(three[i]))
+                  return true;
+          }
+          return false;
+      } else if (word.length() == 4) {
+          for (int i = 0; i < four.length; i++) {
+              if (word.equalsIgnoreCase(four[i]))
+                  return true;
+          }
+          return false;
+      } else {
+          //System.out.println("Choose a word of length 1 to 4");
+          return false;
       }
-      return false;
-    }
-    else if(word.length() == 2)
-    {
-      for(int i = 0; i < two.length; i++)
-      {
-        if(word == two[i])
-          return true;
-      }
-      return false;
-    }
-    else if(word.length() == 3)
-    {
-      for(int i = 0; i < three.length; i++)
-      {
-        if(word == three[i])
-          return true;
-      }
-      return false;
-    }
-    else if(word.length() == 4)
-    {
-      for(int i = 0; i < four.length; i++)
-      {
-        if(word == four[i])
-          return true;
-      }
-      return false;
-    }
-    else
-    {
-      System.out.println("Choose a word of length 1 to 4");
-      return false;
-    }
+  }
   private int getMostFrequentIndexBelow(int prevIndex)//if last prevIndex is =-1 it will return the max index
   {
         if(prevIndex<this.freq.length)
@@ -131,6 +119,21 @@ public class CeaserCipherBreaker
     {
         int difference = alphabet.getDifference(mostCommon,englishFreq[i]);
         String decipherd =cc.decode(text,alphabet,difference);
+        Scanner scanner = new Scanner(decipherd);
+        int englishCount=0;
+        while (scanner.hasNext()&&englishCount<3)
+        {
+            String str = scanner.next();
+            if(IsEnglish(str))
+            {
+                englishCount++;
+            }
+        }
+        if (englishCount==3)
+        {
+            broken=decipherd;
+            break;
+        }
     }
     return broken;
   }
